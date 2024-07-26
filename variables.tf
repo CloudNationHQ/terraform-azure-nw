@@ -1,3 +1,9 @@
+variable "nwatcher" {
+  description = "network watcher configuration"
+  type        = map(string)
+  default     = {}
+}
+
 variable "naming" {
   description = "used for naming purposes"
   type        = map(string)
