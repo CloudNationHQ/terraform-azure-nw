@@ -22,8 +22,8 @@ resource "azurerm_network_watcher_flow_log" "nwatcher_flowlog" {
   tags                      = each.value.tags
 
   retention_policy {
-    enabled = each.value.retention_policy_enabled
-    days    = each.value.retention_policy_days
+    enabled = each.value.retention_policy.enabled
+    days    = each.value.retention_policy.days
   }
 
   dynamic "traffic_analytics" {
