@@ -1,12 +1,12 @@
-variable "nwatcher" {
+variable "watcher" {
   description = "network watcher configuration"
-  type        = map(string)
-  default     = {}
+  type        = any
 }
 
 variable "naming" {
-  description = "used for naming purposes"
+  description = "Used for naming purposes"
   type        = map(string)
+  default     = null
 }
 
 variable "location" {

@@ -1,18 +1,16 @@
-resource "azurerm_network_watcher" "nwatcher" {
-  name                = var.nwatcher.name
-  location            = coalesce(lookup(var.nwatcher, "location", null), var.location)
-  resource_group_name = coalesce(lookup(var.nwatcher, "resource_group", null), var.resourcegroup)
-  tags                = try(var.nwatcher.tags, var.tags, null)
+resource "azurerm_network_watcher" "watcher" {
+  name                = var.watcher.name
+  location            = coalesce(lookup(var.watcher, "location", null), var.location)
+  resource_group_name = coalesce(lookup(var.watcher, "resourcegroup", null), var.resourcegroup)
+  tags                = try(var.watcher.tags, var.tags, null)
 }
 
-resource "azurerm_network_watcher_flow_log" "nwatcher_flowlog" {
-  for_each = try(
-    { for flowlog in local.flowlogs : flowlog.nwfl_key => flowlog }, {}
-  )
+resource "azurerm_network_watcher_flow_log" "watcher_flowlog" {
+  for_each = local.flowlogs
 
   name                = each.value.flowlog_name
-  location            = coalesce(lookup(var.nwatcher, "location", null), var.location)
-  resource_group_name = coalesce(lookup(var.nwatcher, "resource_group", null), var.resourcegroup)
+  location            = coalesce(lookup(var.watcher, "location", null), var.location)
+  resource_group_name = coalesce(lookup(var.watcher, "resourcegroup", null), var.resourcegroup)
 
   network_watcher_name      = each.value.network_watcher_name
   network_security_group_id = each.value.network_security_group_id
