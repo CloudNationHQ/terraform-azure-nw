@@ -1,18 +1,37 @@
 resource "azurerm_network_watcher" "watcher" {
-  name                = var.watcher.name
-  location            = coalesce(lookup(var.watcher, "location", null), var.location)
-  resource_group_name = coalesce(lookup(var.watcher, "resourcegroup", null), var.resourcegroup)
-  tags                = try(var.watcher.tags, var.tags, null)
+  for_each = {
+    for key, val in local.watchers :
+    key => val if val.use_existing_watcher == false
+  }
+
+
+  name                = each.value.name
+  location            = each.value.location
+  resource_group_name = each.value.resource_group
+  tags                = each.value.tags
 }
 
+data "azurerm_network_watcher" "existing_watcher" {
+  for_each = {
+    for key, val in local.watchers :
+    key => val if val.use_existing_watcher == true
+  }
+
+  name                = each.value.name
+  resource_group_name = each.value.resource_group
+}
+
+
 resource "azurerm_network_watcher_flow_log" "watcher_flowlog" {
-  for_each = local.flowlogs
+  for_each = {
+    for fl in local.flowlogs : "${fl.watcher_key}.${fl.fl_key}" => fl
+  }
 
   name                = each.value.flowlog_name
-  location            = coalesce(lookup(var.watcher, "location", null), var.location)
-  resource_group_name = coalesce(lookup(var.watcher, "resourcegroup", null), var.resourcegroup)
+  location            = each.value.location
+  resource_group_name = each.value.resource_group
 
-  network_watcher_name      = each.value.network_watcher_name
+  network_watcher_name      = each.value.use_existing_watcher ? data.azurerm_network_watcher.existing_watcher[each.value.watcher_key].name : azurerm_network_watcher.watcher[each.value.watcher_key].name
   network_security_group_id = each.value.network_security_group_id
   storage_account_id        = each.value.storage_account_id
   enabled                   = each.value.enabled
