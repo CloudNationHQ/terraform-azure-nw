@@ -43,9 +43,7 @@ module "network" {
     subnets = {
       sn1 = {
         cidr = ["10.18.1.0/24"]
-        nsg = {
-          rules = local.rules
-        }
+        nsg  = {}
       }
     }
   }
