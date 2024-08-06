@@ -21,7 +21,7 @@ watchers = object({
       enabled               = optional(bool)
     }))
     retention_policy = optional(object({
-      days = number
+      days    = number
       enabled = bool
     }))
   })))
