@@ -6,13 +6,13 @@ This example highlights the complete usage.
 
 ```hcl
 watchers = object({
-  name          = string
+  name           = string
   resource_group = string
-  location      = string
+  location       = string
   flowlogs = optional(map(object({
     network_security_group_id  = string
-    storage_account_id = string
-    traffic_analytics = optional(object({
+    storage_account_id         = string
+    traffic_analytics          = optional(object({
       workspace_id = string
     }))
     retention_policy = optional(object({
