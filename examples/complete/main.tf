@@ -81,6 +81,7 @@ module "watcher" {
           storage_account_id        = module.storage.account.id
           retention_policy_days     = 7
           version                   = 2
+
           traffic_analytics = {
             enabled               = true
             workspace_id          = module.analytics.workspace.workspace_id

@@ -51,23 +51,49 @@ module "network" {
   }
 }
 
+module "analytics" {
+  source  = "cloudnationhq/law/azure"
+  version = "~> 0.1"
+
+  law = {
+    name          = module.naming.log_analytics_workspace.name
+    location      = module.rg.groups.demo.location
+    resourcegroup = module.rg.groups.demo.name
+  }
+}
+
+module "analytics" {
+  source  = "cloudnationhq/law/azure"
+  version = "~> 0.1"
+
+  law = {
+    name          = module.naming.log_analytics_workspace.name
+    location      = module.rg.groups.demo.location
+    resourcegroup = module.rg.groups.demo.name
+  }
+}
+
 module "watcher" {
   source  = "cloudnationhq/nw/azure"
   version = "~> 0.1"
 
   watchers = {
     watcher = {
-      name           = "NetworkWatcher_westeurope"
-      location       = "westeurope"
-      resource_group = "NetworkWatcherRG"
-
-      use_existing_watcher = true
+      name           = module.naming.network_watcher.name
+      location       = module.rg.groups.demo.location
+      resource_group = module.rg.groups.demo.name
 
       flowlogs = {
         flowlog = {
           name                      = module.naming.network_watcher_flow_log.name
           network_security_group_id = module.network.nsg.sn1.id
           storage_account_id        = module.storage.account.id
+
+          traffic_analytics = {
+            workspace_id          = module.analytics.workspace.workspace_id
+            workspace_region      = module.rg.groups.demo.location
+            workspace_resource_id = module.analytics.workspace.id
+          }
         }
       }
     }

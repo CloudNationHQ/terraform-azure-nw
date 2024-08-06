@@ -67,12 +67,10 @@ module "watcher" {
   version = "~> 0.1"
 
   watchers = {
-    watcher_scus = {
-      name          = "Existing_NetworkWatcher"
-      location      = module.rg.groups.demo.location
-      resourcegroup = module.rg.groups.demo.name
-
-      use_existing_watcher = true
+    watcher = {
+      name           = module.naming.network_watcher.name
+      location       = module.rg.groups.demo.location
+      resource_group = module.rg.groups.demo.name
 
       flowlogs = {
         flowlog = {
