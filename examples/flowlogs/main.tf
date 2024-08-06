@@ -63,7 +63,8 @@ module "analytics" {
 }
 
 module "watcher" {
-  source = "../.."
+  source  = "cloudnationhq/nw/azure"
+  version = "~> 0.1"
 
   watchers = {
     watcher_scus = {
