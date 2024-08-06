@@ -1,5 +1,4 @@
 locals {
-
   watchers = {
     for watcher_key, watcher in var.watchers : watcher_key => {
       name                 = watcher.name

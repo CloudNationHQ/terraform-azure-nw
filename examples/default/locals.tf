@@ -4,7 +4,7 @@ locals {
     for type in local.naming_types : type => lookup(module.naming, type).name
   }
 
-  naming_types = ["subnet", "network_security_group", "network_watcher", "network_watcher_flow_log", "log_analytics_workspace", "virtual_network", "storage_account", "resource_group"]
+  naming_types = ["subnet", "network_security_group", "network_watcher_flow_log"]
 }
 
 locals {

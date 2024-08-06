@@ -66,46 +66,18 @@ module "watcher" {
   source = "../.."
 
   watchers = {
-    watcher = {
-      name           = module.naming.network_watcher.name
-      location       = module.rg.groups.demo.location
-      resource_group = module.rg.groups.demo.name
+    watcher_scus = {
+      name          = "Existing_NetworkWatcher"
+      location      = module.rg.groups.demo.location
+      resourcegroup = module.rg.groups.demo.name
 
-      use_existing_watcher = false
-
-      flowlogs = {
-        flowlog = {
-          name                      = module.naming.network_watcher_flow_log.name
-          network_security_group_id = module.network.nsg.sn1.id
-          storage_account_id        = module.storage.account.id
-          retention_policy_days     = 7
-          traffic_analytics = {
-            enabled               = true
-            workspace_id          = module.analytics.workspace.workspace_id
-            workspace_region      = module.rg.groups.demo.location
-            workspace_resource_id = module.analytics.workspace.id
-          }
-        }
-      }
-    }
-    watcher = {
-      name                 = "NetworkWatcher_Existing"
       use_existing_watcher = true
-      location             = module.rg.groups.demo.location
-      resource_group       = module.rg.groups.demo.name
 
       flowlogs = {
         flowlog = {
           name                      = module.naming.network_watcher_flow_log.name
           network_security_group_id = module.network.nsg.sn1.id
           storage_account_id        = module.storage.account.id
-          retention_policy_days     = 7
-          traffic_analytics = {
-            enabled               = true
-            workspace_id          = module.analytics.workspace.workspace_id
-            workspace_region      = module.rg.groups.demo.location
-            workspace_resource_id = module.analytics.workspace.id
-          }
         }
       }
     }
