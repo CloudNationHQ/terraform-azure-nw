@@ -47,6 +47,7 @@ End-to-end testing is not conducted on these modules, as they are individual com
 | Name | Type |
 |------|------|
 | [azurerm_network_watcher](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_watcher) | resource |
+| [azurerm_network_watcher](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/network_watcher) | data source |
 | [azurerm_network_watcher_flow_log](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_watcher_flow_log) | resource |
 
 
@@ -95,11 +96,11 @@ Module is maintained by [these awesome contributors](https://github.com/cloudnat
 
 We welcome contributions from the community! Whether it's reporting a bug, suggesting a new feature, or submitting a pull request, your input is highly valued.
 
-For more information, please see our contribution [guidelines](https://github.com/CloudNationHQ/terraform-azure-nw/blob/main/CONTRIBUTE.md).
+For more information, please see our contribution [guidelines](./CONTRIBUTING.md).
 
 ## License
 
-MIT Licensed. See [LICENSE](https://github.com/cloudnationhq/terraform-azure-nw/blob/main/LICENSE) for full details.
+MIT Licensed. See [LICENSE](./LICENSE) for full details.
 
 ## References
 
