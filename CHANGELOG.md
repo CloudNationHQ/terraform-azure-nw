@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/CloudNationHQ/terraform-azure-nw/compare/v0.1.0...v0.2.0) (2024-08-29)
+
+
+### Features
+
+* update documentation ([#5](https://github.com/CloudNationHQ/terraform-azure-nw/issues/5)) ([1fc65f1](https://github.com/CloudNationHQ/terraform-azure-nw/commit/1fc65f1fe2e8c41143efe4926a5ae1a9dd95c539))
+
 ## 0.1.0 (2024-08-06)
 
 
