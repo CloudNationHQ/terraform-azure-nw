@@ -4,7 +4,6 @@ resource "azurerm_network_watcher" "watcher" {
     key => val if val.use_existing_watcher == false
   }
 
-
   name                = each.value.name
   location            = each.value.location
   resource_group_name = each.value.resource_group
@@ -20,7 +19,6 @@ data "azurerm_network_watcher" "existing_watcher" {
   name                = each.value.name
   resource_group_name = each.value.resource_group
 }
-
 
 resource "azurerm_network_watcher_flow_log" "watcher_flowlog" {
   for_each = {
