@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/CloudNationHQ/terraform-azure-nw/compare/v0.2.0...v1.0.0) (2024-09-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* * Version 4 of the azurerm provider includes breaking changes.
+
+### Features
+
+* upgrade azurerm provder to v4 ([#8](https://github.com/CloudNationHQ/terraform-azure-nw/issues/8)) ([64a6953](https://github.com/CloudNationHQ/terraform-azure-nw/commit/64a6953c4683308542458fbcce4e769e23aa77a5))
+
 ## [0.2.0](https://github.com/CloudNationHQ/terraform-azure-nw/compare/v0.1.0...v0.2.0) (2024-08-29)
 
 
