@@ -9,7 +9,7 @@
 
 ### Features
 
-* upgrade azurerm provder to v4 ([#8](https://github.com/CloudNationHQ/terraform-azure-nw/issues/8)) ([64a6953](https://github.com/CloudNationHQ/terraform-azure-nw/commit/64a6953c4683308542458fbcce4e769e23aa77a5))
+* upgrade azurerm provider to v4 ([#8](https://github.com/CloudNationHQ/terraform-azure-nw/issues/8)) ([64a6953](https://github.com/CloudNationHQ/terraform-azure-nw/commit/64a6953c4683308542458fbcce4e769e23aa77a5))
 
 ### Upgrade from v0.2.0 to v1.0.0:
 
