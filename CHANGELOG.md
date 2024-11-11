@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/CloudNationHQ/terraform-azure-nw/compare/v1.1.0...v1.2.0) (2024-11-11)
+
+
+### Features
+
+* enhance testing with sequential, parallel modes and flags for exceptions and skip-destroy ([#13](https://github.com/CloudNationHQ/terraform-azure-nw/issues/13)) ([21fd2be](https://github.com/CloudNationHQ/terraform-azure-nw/commit/21fd2be275142b496787d8ba9d7cd3ecbfa70bda))
+
 ## [1.1.0](https://github.com/CloudNationHQ/terraform-azure-nw/compare/v1.0.0...v1.1.0) (2024-10-11)
 
 
