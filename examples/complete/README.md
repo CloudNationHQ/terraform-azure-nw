@@ -27,3 +27,7 @@ watchers = object({
   })))
 })
 ```
+
+## Notes
+
+You can also utilize an existing watcher by setting use_existing_watcher = true.
