@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/CloudNationHQ/terraform-azure-nw/compare/v1.2.0...v1.2.1) (2024-12-10)
+
+
+### Bug Fixes
+
+* fix several deployments issues ([#16](https://github.com/CloudNationHQ/terraform-azure-nw/issues/16)) ([ba0e399](https://github.com/CloudNationHQ/terraform-azure-nw/commit/ba0e3993029c6c4a01b6be173595e32b534a1414))
+
 ## [1.2.0](https://github.com/CloudNationHQ/terraform-azure-nw/compare/v1.1.0...v1.2.0) (2024-11-11)
 
 
