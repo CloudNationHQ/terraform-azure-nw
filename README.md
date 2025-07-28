@@ -2,31 +2,11 @@
 
 This terraform module simplifies the process of creating and managing network watcher (flow logs) on azure with customizable options and features, offering a flexible and powerful solution for managing network watchers through code.
 
-## Goals
-
-The main objective is to create a more logic data structure, achieved by combining and grouping related resources together in a complex object.
-
-The structure of the module promotes reusability. It's intended to be a repeatable component, simplifying the process of building diverse workloads and platform accelerators consistently.
-
-A primary goal is to utilize keys and values in the object that correspond to the REST API's structure. This enables us to carry out iterations, increasing its practical value as time goes on.
-
-A last key goal is to separate logic from configuration in the module, thereby enhancing its scalability, ease of customization, and manageability.
-
-## Non-Goals
-
-These modules are not intended to be complete, ready-to-use solutions; they are designed as components for creating your own patterns.
-
-They are not tailored for a single use case but are meant to be versatile and applicable to a range of scenarios.
-
-Security standardization is applied at the pattern level, while the modules include default values based on best practices but do not enforce specific security standards.
-
-End-to-end testing is not conducted on these modules, as they are individual components and do not undergo the extensive testing reserved for complete patterns or solutions.
-
 ## Features
 
 - Support for multiple network watchers
 - Allows multiple flow logs per network watcher
-- utilization of terratest for robust validation
+- Utilization of terratest for robust validation
 - Provides support for utilizing existing network watchers.
 
 <!-- BEGIN_TF_DOCS -->
@@ -35,13 +15,13 @@ End-to-end testing is not conducted on these modules, as they are individual com
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.11 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 4.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 4.11 |
 
 ## Resources
 
@@ -69,11 +49,27 @@ End-to-end testing is not conducted on these modules, as they are individual com
 | <a name="output_watcher"></a> [watcher](#output\_watcher) | contains network watcher details |
 <!-- END_TF_DOCS -->
 
+## Goals
+
+For more information, please see our [goals and non-goals](./GOALS.md).
+
 ## Testing
 
 For more information, please see our testing [guidelines](./TESTING.md)
 
 ## Notes
+
+By default, Network Watchers are automatically created by Azure, upon deployment of a Virtual Network in that same region. In addition, only one Network Watcher per subscription for each region can be deployed. Therefore, if you want to manage the Network Watcher through Terraform, you can either opt out automatic enablement of Network Watcher [by using the AZ CLI or PowerShell](https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-create?tabs=portal#opt-out-of-network-watcher-automatic-enablement) or use the `use_existing_watcher` flag.
+
+### Example: Using `use_existing_watcher` for West Europe
+
+```hcl
+  watcher = {
+    name                 = "NetworkWatcher_westeurope"
+    resource_group       = "NetworkWatcherRG"
+    use_existing_watcher = true
+  }
+```
 
 Using a dedicated module, we've developed a naming convention for resources that's based on specific regular expressions for each type, ensuring correct abbreviations and offering flexibility with multiple prefixes and suffixes.
 
@@ -85,11 +81,15 @@ To update the module's documentation run `make doc`
 
 Module is maintained by [these awesome contributors](https://github.com/cloudnationhq/terraform-azure-nw/graphs/contributors).
 
-## Contributing
+## Contributors
 
 We welcome contributions from the community! Whether it's reporting a bug, suggesting a new feature, or submitting a pull request, your input is highly valued.
 
-For more information, please see our contribution [guidelines](./CONTRIBUTING.md).
+For more information, please see our contribution [guidelines](./CONTRIBUTING.md). <br><br>
+
+<a href="https://github.com/cloudnationhq/terraform-azure-nw/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=cloudnationhq/terraform-azure-nw" />
+</a>
 
 ## License
 

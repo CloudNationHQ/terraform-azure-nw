@@ -29,12 +29,12 @@ resource "azurerm_network_watcher_flow_log" "watcher_flowlog" {
   location            = each.value.location
   resource_group_name = each.value.resource_group
 
-  network_watcher_name      = each.value.use_existing_watcher ? data.azurerm_network_watcher.existing_watcher[each.value.watcher_key].name : azurerm_network_watcher.watcher[each.value.watcher_key].name
-  network_security_group_id = each.value.network_security_group_id
-  storage_account_id        = each.value.storage_account_id
-  enabled                   = each.value.enabled
-  version                   = each.value.version
-  tags                      = each.value.tags
+  network_watcher_name = each.value.use_existing_watcher ? data.azurerm_network_watcher.existing_watcher[each.value.watcher_key].name : azurerm_network_watcher.watcher[each.value.watcher_key].name
+  target_resource_id   = each.value.target_resource_id
+  storage_account_id   = each.value.storage_account_id
+  enabled              = each.value.enabled
+  version              = each.value.version
+  tags                 = each.value.tags
 
   retention_policy {
     enabled = each.value.retention_policy_enabled

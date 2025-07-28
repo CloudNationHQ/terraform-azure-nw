@@ -19,26 +19,26 @@ module "rg" {
 
 module "storage" {
   source  = "cloudnationhq/sa/azure"
-  version = "~> 3.0"
+  version = "~> 4.0"
 
   storage = {
-    name           = module.naming.storage_account.name_unique
-    location       = module.rg.groups.demo.location
-    resource_group = module.rg.groups.demo.name
+    name                = module.naming.storage_account.name_unique
+    location            = module.rg.groups.demo.location
+    resource_group_name = module.rg.groups.demo.name
   }
 }
 
 module "network" {
   source  = "cloudnationhq/vnet/azure"
-  version = "~> 8.0"
+  version = "~> 9.0"
 
   naming = local.naming
 
   vnet = {
-    name           = module.naming.virtual_network.name
-    address_space  = ["10.18.0.0/16"]
-    location       = module.rg.groups.demo.location
-    resource_group = module.rg.groups.demo.name
+    name                = module.naming.virtual_network.name
+    address_space       = ["10.18.0.0/16"]
+    location            = module.rg.groups.demo.location
+    resource_group_name = module.rg.groups.demo.name
 
     subnets = {
       sn1 = {
@@ -51,12 +51,12 @@ module "network" {
 
 module "analytics" {
   source  = "cloudnationhq/law/azure"
-  version = "~> 2.0"
+  version = "~> 3.0"
 
   workspace = {
-    name           = module.naming.log_analytics_workspace.name
-    location       = module.rg.groups.demo.location
-    resource_group = module.rg.groups.demo.name
+    name                = module.naming.log_analytics_workspace.name
+    location            = module.rg.groups.demo.location
+    resource_group_name = module.rg.groups.demo.name
   }
 }
 
@@ -74,11 +74,11 @@ module "watcher" {
 
       flowlogs = {
         flowlog = {
-          name                      = module.naming.network_watcher_flow_log.name
-          network_security_group_id = module.network.network_security_group.sn1.id
-          storage_account_id        = module.storage.account.id
-          retention_policy_days     = 7
-          version                   = 2
+          name                  = module.naming.network_watcher_flow_log.name
+          target_resource_id    = module.network.vnet.id
+          storage_account_id    = module.storage.account.id
+          retention_policy_days = 7
+          version               = 2
 
           traffic_analytics = {
             enabled               = true
