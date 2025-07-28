@@ -10,7 +10,7 @@ watcher = object({
   resource_group = string
   location       = string
   flowlogs = optional(map(object({
-    network_security_group_id  = string
+    target_resource_id         = string
     storage_account_id         = string
   })))
 })

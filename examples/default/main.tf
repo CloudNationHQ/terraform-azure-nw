@@ -19,26 +19,26 @@ module "rg" {
 
 module "storage" {
   source  = "cloudnationhq/sa/azure"
-  version = "~> 3.0"
+  version = "~> 4.0"
 
   storage = {
-    name           = module.naming.storage_account.name_unique
-    location       = module.rg.groups.demo.location
-    resource_group = module.rg.groups.demo.name
+    name                = module.naming.storage_account.name_unique
+    location            = module.rg.groups.demo.location
+    resource_group_name = module.rg.groups.demo.name
   }
 }
 
 module "network" {
   source  = "cloudnationhq/vnet/azure"
-  version = "~> 8.0"
+  version = "~> 9.0"
 
   naming = local.naming
 
   vnet = {
-    name           = module.naming.virtual_network.name
-    address_space  = ["10.18.0.0/16"]
-    location       = module.rg.groups.demo.location
-    resource_group = module.rg.groups.demo.name
+    name                = module.naming.virtual_network.name
+    address_space       = ["10.18.0.0/16"]
+    location            = module.rg.groups.demo.location
+    resource_group_name = module.rg.groups.demo.name
 
     subnets = {
       sn1 = {

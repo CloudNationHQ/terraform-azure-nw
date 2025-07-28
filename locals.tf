@@ -14,13 +14,13 @@ locals {
       for fl_key, fl in lookup(watcher, "flowlogs", {}) : {
 
 
-        watcher_key               = watcher_key
-        fl_key                    = fl_key
-        flowlog_name              = try(fl.name, join("-", [var.naming.network_watcher, fl_key]))
-        resource_group            = try(fl.resource_group, watcher.resource_group, var.resource_group)
-        location                  = try(fl.location, watcher.location, var.location)
-        network_security_group_id = fl.network_security_group_id
-        storage_account_id        = coalesce(lookup(var.watchers, "storage_account_id", null), fl.storage_account_id)
+        watcher_key        = watcher_key
+        fl_key             = fl_key
+        flowlog_name       = try(fl.name, join("-", [var.naming.network_watcher, fl_key]))
+        resource_group     = try(fl.resource_group, watcher.resource_group, var.resource_group)
+        location           = try(fl.location, watcher.location, var.location)
+        target_resource_id = fl.target_resource_id
+        storage_account_id = coalesce(lookup(var.watchers, "storage_account_id", null), fl.storage_account_id)
 
         enabled                  = try(fl.enabled, true)
         version                  = try(fl.version, null)
