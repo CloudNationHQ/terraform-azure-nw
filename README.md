@@ -21,7 +21,7 @@ This terraform module simplifies the process of creating and managing network wa
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.37.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 4.11 |
 
 ## Resources
 
