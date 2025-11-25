@@ -20,7 +20,7 @@ locals {
         resource_group     = try(fl.resource_group, watcher.resource_group, var.resource_group)
         location           = try(fl.location, watcher.location, var.location)
         target_resource_id = fl.target_resource_id
-        storage_account_id = coalesce(lookup(var.watchers, "storage_account_id", null), fl.storage_account_id)
+        storage_account_id = coalesce(try(watcher.storage_account_id, null), fl.storage_account_id)
 
         enabled                  = try(fl.enabled, true)
         version                  = try(fl.version, null)
