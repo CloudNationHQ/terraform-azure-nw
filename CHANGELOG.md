@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/CloudNationHQ/terraform-azure-nw/compare/v1.4.0...v1.4.1) (2025-11-26)
+
+
+### Bug Fixes
+
+* update to try instead of lookup for consistent lookup type ([#41](https://github.com/CloudNationHQ/terraform-azure-nw/issues/41)) ([fbe6d8a](https://github.com/CloudNationHQ/terraform-azure-nw/commit/fbe6d8a243f627ac532a32b4d823f9866c1a61f9))
+
 ## [1.4.0](https://github.com/CloudNationHQ/terraform-azure-nw/compare/v1.3.0...v1.4.0) (2025-07-28)
 
 
