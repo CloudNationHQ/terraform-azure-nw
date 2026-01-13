@@ -1,6 +1,6 @@
 module "naming" {
   source  = "cloudnationhq/naming/azure"
-  version = "~> 0.22"
+  version = "~> 0.26"
 
   suffix = ["demo", "dev"]
 }
@@ -62,13 +62,13 @@ module "analytics" {
 
 module "watcher" {
   source  = "cloudnationhq/nw/azure"
-  version = "~> 1.0"
+  version = "~> 2.0"
 
   watchers = {
     watcher = {
-      name           = module.naming.network_watcher.name
-      location       = module.rg.groups.demo.location
-      resource_group = module.rg.groups.demo.name
+      name                = module.naming.network_watcher.name
+      location            = module.rg.groups.demo.location
+      resource_group_name = module.rg.groups.demo.name
 
       flowlogs = {
         flowlog = {
