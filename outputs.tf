@@ -1,7 +1,7 @@
 output "watcher" {
   description = "contains network watcher details"
   value = {
-    for key, val in local.watchers : key => val.use_existing_watcher == true ? try(data.azurerm_network_watcher.existing_watcher[key], null) : try(azurerm_network_watcher.watcher[key], null)
+    for key, val in var.watchers : key => val.use_existing_watcher ? data.azurerm_network_watcher.existing_watcher[key] : azurerm_network_watcher.watcher[key]
   }
 }
 
