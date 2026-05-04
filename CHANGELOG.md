@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.1.0](https://github.com/CloudNationHQ/terraform-azure-nw/compare/v2.0.0...v2.1.0) (2026-05-04)
+
+
+### Features
+
+* **deps:** bump github.com/cloudnationhq/az-cn-go-validor in /tests ([#47](https://github.com/CloudNationHQ/terraform-azure-nw/issues/47)) ([3417520](https://github.com/CloudNationHQ/terraform-azure-nw/commit/341752065a92a1ff269df963710bc3c32e23c8ce))
+* **deps:** bump github.com/cloudnationhq/az-cn-go-validor in /tests ([#49](https://github.com/CloudNationHQ/terraform-azure-nw/issues/49)) ([5a300b5](https://github.com/CloudNationHQ/terraform-azure-nw/commit/5a300b5458c44b4cc64f63399666df220c93294f))
+* **deps:** bump github.com/cloudnationhq/az-cn-go-validor in /tests ([#50](https://github.com/CloudNationHQ/terraform-azure-nw/issues/50)) ([1208734](https://github.com/CloudNationHQ/terraform-azure-nw/commit/12087342be91d22aaf9f7b21ef86d56fb12d6cd7))
+* **deps:** bump github.com/cloudnationhq/az-cn-go-validor in /tests ([#51](https://github.com/CloudNationHQ/terraform-azure-nw/issues/51)) ([5104188](https://github.com/CloudNationHQ/terraform-azure-nw/commit/5104188284850fd50f55700cb8fe755d82dba468))
+
 ## [2.0.0](https://github.com/CloudNationHQ/terraform-azure-nw/compare/v1.4.1...v2.0.0) (2026-01-13)
 
 
