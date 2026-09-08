@@ -25,16 +25,10 @@ variable "watchers" {
         workspace_id          = string
         workspace_region      = string
         workspace_resource_id = string
-        interval_in_minutes   = optional(number, 60)
+        interval_in_minutes   = optional(number)
       }))
     })), {})
   }))
-}
-
-variable "naming" {
-  description = "Used for naming purposes"
-  type        = map(string)
-  default     = null
 }
 
 variable "location" {
