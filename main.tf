@@ -1,4 +1,4 @@
-resource "azurerm_network_watcher" "watcher" {
+resource "azurerm_network_watcher" "this" {
   for_each = {
     for watcher_key, watcher in var.watchers : watcher_key => watcher
     if watcher.use_existing_watcher == false
@@ -7,22 +7,19 @@ resource "azurerm_network_watcher" "watcher" {
   name = each.value.name
 
   resource_group_name = coalesce(
-    each.value.resource_group_name,
-    var.resource_group_name
+    each.value.resource_group_name, var.resource_group_name
   )
 
   location = coalesce(
-    each.value.location,
-    var.location
+    each.value.location, var.location
   )
 
   tags = coalesce(
-    each.value.tags,
-    var.tags
+    each.value.tags, var.tags
   )
 }
 
-data "azurerm_network_watcher" "existing_watcher" {
+data "azurerm_network_watcher" "this" {
   for_each = {
     for watcher_key, watcher in var.watchers : watcher_key => watcher
     if watcher.use_existing_watcher == true
@@ -31,12 +28,11 @@ data "azurerm_network_watcher" "existing_watcher" {
   name = each.value.name
 
   resource_group_name = coalesce(
-    each.value.resource_group_name,
-    var.resource_group_name
+    each.value.resource_group_name, var.resource_group_name
   )
 }
 
-resource "azurerm_network_watcher_flow_log" "watcher_flowlog" {
+resource "azurerm_network_watcher_flow_log" "this" {
   for_each = {
     for fl in flatten([
       for watcher_key, watcher in var.watchers : [
@@ -52,9 +48,7 @@ resource "azurerm_network_watcher_flow_log" "watcher_flowlog" {
   }
 
   name = coalesce(
-    each.value.flowlog.name,
-    try(var.naming.network_watcher_flow_log, null),
-    "${each.value.watcher_key}-${each.value.fl_key}"
+    each.value.flowlog.name, each.value.fl_key
   )
 
   resource_group_name = coalesce(
@@ -69,7 +63,7 @@ resource "azurerm_network_watcher_flow_log" "watcher_flowlog" {
     var.location
   )
 
-  network_watcher_name = each.value.use_existing_watcher ? data.azurerm_network_watcher.existing_watcher[each.value.watcher_key].name : azurerm_network_watcher.watcher[each.value.watcher_key].name
+  network_watcher_name = each.value.use_existing_watcher ? data.azurerm_network_watcher.this[each.value.watcher_key].name : azurerm_network_watcher.this[each.value.watcher_key].name
   target_resource_id   = each.value.flowlog.target_resource_id
 
   storage_account_id = coalesce(
@@ -81,8 +75,7 @@ resource "azurerm_network_watcher_flow_log" "watcher_flowlog" {
   version = each.value.flowlog.version
 
   tags = coalesce(
-    each.value.flowlog.tags,
-    var.tags
+    each.value.flowlog.tags, var.tags
   )
 
   retention_policy {
@@ -91,7 +84,7 @@ resource "azurerm_network_watcher_flow_log" "watcher_flowlog" {
   }
 
   dynamic "traffic_analytics" {
-    for_each = each.value.flowlog.traffic_analytics != null ? [each.value.flowlog.traffic_analytics] : []
+    for_each = each.value.flowlog.traffic_analytics != null ? { "this" = each.value.flowlog.traffic_analytics } : {}
 
     content {
       enabled               = traffic_analytics.value.enabled

@@ -1,25 +1,25 @@
 module "naming" {
   source  = "cloudnationhq/naming/azure"
-  version = "~> 0.26"
+  version = "~> 0.32"
 
   suffix = ["demo", "dev"]
 }
 
 module "rg" {
   source  = "cloudnationhq/rg/azure"
-  version = "~> 2.0"
+  version = "~> 3.0"
 
   groups = {
     demo = {
       name     = module.naming.resource_group.name_unique
-      location = "northeurope"
+      location = "canadacentral"
     }
   }
 }
 
 module "storage" {
   source  = "cloudnationhq/sa/azure"
-  version = "~> 4.0"
+  version = "~> 5.0"
 
   storage = {
     name                = module.naming.storage_account.name_unique
@@ -30,9 +30,8 @@ module "storage" {
 
 module "network" {
   source  = "cloudnationhq/vnet/azure"
-  version = "~> 9.0"
+  version = "~> 10.0"
 
-  naming = local.naming
 
   vnet = {
     name                = module.naming.virtual_network.name
@@ -51,7 +50,7 @@ module "network" {
 
 module "analytics" {
   source  = "cloudnationhq/law/azure"
-  version = "~> 3.0"
+  version = "~> 4.0"
 
   workspace = {
     name                = module.naming.log_analytics_workspace.name
@@ -62,7 +61,7 @@ module "analytics" {
 
 module "watcher" {
   source  = "cloudnationhq/nw/azure"
-  version = "~> 2.0"
+  version = "~> 3.0"
 
   watchers = {
     watcher = {
