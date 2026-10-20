@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/CloudNationHQ/terraform-azure-nw/compare/v3.0.0...v3.1.0) (2026-10-20)
+
+
+### Features
+
+* **deps:** bump github.com/klauspost/compress in /tests ([#55](https://github.com/CloudNationHQ/terraform-azure-nw/issues/55)) ([1dd9bf2](https://github.com/CloudNationHQ/terraform-azure-nw/commit/1dd9bf21e3baf6558a6ee720249d5764ab3b474b))
+
 ## [3.0.0](https://github.com/CloudNationHQ/terraform-azure-nw/compare/v2.0.0...v3.0.0) (2026-09-08)
 
 
